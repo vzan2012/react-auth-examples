@@ -47,6 +47,11 @@ export async function action({ request }) {
   // Store the token in the localStorage
   localStorage.setItem("token", token);
 
+  // Expiration for the token
+  const expiration = new Date();
+  expiration.setHours(expiration.getHours() + 1);
+  localStorage.setItem("expiration", expiration.toISOString());
+
   // TODO: Manage Tokens
   return redirect("/");
 }
